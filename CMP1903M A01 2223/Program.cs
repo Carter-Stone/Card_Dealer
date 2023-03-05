@@ -10,7 +10,10 @@ namespace CMP1903M_A01_2223
     {
         static void Main(string[] args)
         {
-            var card1H = new Card(1);
+            Pack pack = new Pack();
+            pack.shuffle(ShuffleType.Riffle);
+           // var card1 = new Card("Generic card");
+           // Console.writeLine("card Name = " + Card.getname());
         }
     }
 }
