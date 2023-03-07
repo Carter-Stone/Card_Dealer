@@ -70,14 +70,34 @@ namespace CMP1903M_A01_2223
                 _cards[n] = card;
             }
         }
-        public static Card dealCard()
+        public static card deal()
         {
+            //Error Handling
+            if(_cards.Count == 0)
+            {
+                throw new Exception("No cards in deck");
+            }
             //Deals one card
+            var TopCard = _cards[0];
+            _cards.RemoveAt(0);
+            return TopCard;
 
         }
+        
         public static List<Card> dealCard(int amount)
         {
             //Deals the number of cards specified by 'amount'
+            if (amount > _cards.Count || amount < 1)
+            {
+                throw new ArgumentException("Insufficient amount of cards");
+            }
+
+            List<Card> dealtCards = new List<Card>();
+            for (int i = 0; i < amount; i++)
+            {
+                dealtCards.Add(deal());
+            }
+            return dealtCards;
         }
     }
 }
