@@ -11,13 +11,12 @@ namespace CMP1903M_A01_2223
         public static void test()
         {
             new Pack();
-            Pack.shuffleCardPack(Riffle);
-            Console.WriteLine(Pack.deal());
-            Pack.shuffleCardPack(FisherYates);
-            Console.WriteLine(Pack.deal());
-            Pack.shuffleCardPack(None);
-            Console.WriteLine(Pack.deal());
-            List<Card>
+            Pack.shuffleCardPack(1);
+            Console.WriteLine(Pack.Deal());
+            Pack.shuffleCardPack(2);
+            Console.WriteLine(Pack.Deal());
+            Pack.shuffleCardPack(3);
+            Console.WriteLine(Pack.Deal());
 
         }
         //create a pack object here

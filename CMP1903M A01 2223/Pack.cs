@@ -13,28 +13,28 @@ namespace CMP1903M_A01_2223
         None = 3,
     }
 
-    class Pack
+    public class Pack
     {
-       private List<Card> _cards = new List<Card>() ;
+       private List<Card> _cards = new List<Card>();
 
         public Pack()
         {
             //Initialise the card pack here
-            foreach (string _Suit in string.GetValues(typeof(_suit)))
+            foreach (Suit _Suit in Enum.GetValues(typeof(Suit)))
             {
-                foreach (string _Number in string.GetValues(typeof(_Number)))
+                foreach (Number _Number in Enum.GetValues(typeof(Number)))
                 {
                     _cards.Add(new Card {Suit = _Suit, Number = _Number});
                 }
             }
         }
 
-        public static bool shuffleCardPack(int typeofShuffle)
+        public void shuffleCardPack(int typeofShuffle)
         {
             //Shuffles the pack based on the type of shuffle
             switch (ShuffleType)
             {
-                case ShuffleType.Riffle:
+               case ShuffleType.Riffle:
                     Riffle();
                     break;
                 case ShuffleType.FisherYates:
@@ -43,7 +43,7 @@ namespace CMP1903M_A01_2223
                 case ShuffleType.None:
                 break;
                 default:
-                    throw new ArgumentException("invalid shuffle type");
+                throw new ArgumentException("invalid shuffle type");
             }
         }
         public void Riffle()
@@ -73,7 +73,7 @@ namespace CMP1903M_A01_2223
                 _cards[n] = card;
             }
         }
-        public static card deal()
+        public void Deal()
         {
             //Error Handling
             if(_cards.Count == 0)

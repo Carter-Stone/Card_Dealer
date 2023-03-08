@@ -35,8 +35,8 @@ namespace CMP1903M_A01_2223
     {
         //Base for the Card class.
         //The 'set' methods for these properties could have some validation
-        public string _Value {get; set;}
-        public string _Number{get; set;}
+        public string _Number {get; set;}
+        public string _Suit {get; set;}
 
         public override string toString()
         {
