@@ -8,15 +8,15 @@ namespace CMP1903M_A01_2223
 {
     class Program
     {
-        static void Main(string[] args)
+        static static void Main()
         {
-            Pack pack = new Pack();
-            pack.shuffleCardPack(ShuffleType.Riffle);
-            pack.dealCard(10);
-            Console.WriteLine(Card);
-
-           // var card1 = new Card("Generic card");
-           // Console.writeLine("card Name = " + Card.getname());
+            Pack pack = new Pack(); //create pack
+            pack.shuffleCardPack(ShuffleType.Riffle); //shuffle
+            List<Card>[] hand = pack.Deal(2); //deal 2
+            foreach(Card card in hand)
+            {
+                Console.WriteLine(Card); //print hand
+            }
         }
     }
 }

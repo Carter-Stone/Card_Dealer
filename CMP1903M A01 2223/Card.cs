@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
-    public enum Number
+    //assigns an int to each string
+        public enum Number
         {
             Ace = 1,
             Two = 2,
@@ -30,17 +31,16 @@ namespace CMP1903M_A01_2223
             Heart = 3,
             Spade = 4,
         }
-
+    //constructs a card
     public class Card
     {
         //Base for the Card class.
-        //The 'set' methods for these properties could have some validation
         public string _Number {get; set;}
         public string _Suit {get; set;}
 
         public override string toString()
         {
-            return $"{Number} of {Suit}s";
+            return $"{Number} of {Suit}s"; //returns card in readable format
         }
     }
 }

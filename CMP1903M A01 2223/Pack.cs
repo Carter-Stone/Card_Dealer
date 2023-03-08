@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
+    //allows 3 types of shuffles
     public enum ShuffleType
     {
         Riffle = 1,
@@ -16,10 +17,9 @@ namespace CMP1903M_A01_2223
     public class Pack
     {
        private List<Card> _cards = new List<Card>();
-
         public Pack()
         {
-            //Initialise the card pack here
+            //creates a pack of cards, one instance for each number of each suit
             foreach (Suit _Suit in Enum.GetValues(typeof(Suit)))
             {
                 foreach (Number _Number in Enum.GetValues(typeof(Number)))
@@ -29,6 +29,7 @@ namespace CMP1903M_A01_2223
             }
         }
 
+        //searches for a match and carries out the corresponding shuffle
         public void shuffleCardPack(int typeofShuffle)
         {
             //Shuffles the pack based on the type of shuffle
@@ -42,11 +43,11 @@ namespace CMP1903M_A01_2223
                     break;
                 case ShuffleType.None:
                 break;
-                default:
+                default:  //Error handling
                 throw new ArgumentException("invalid shuffle type");
             }
         }
-        public void Riffle()
+        public void Riffle() //splits the pack in half and interweaves them
         {
             List<Card> shuffledCards = new List<Card>();
             int halfIndex = _cards.Count/2;
@@ -61,11 +62,11 @@ namespace CMP1903M_A01_2223
             }
             _cards = shuffledCards;
         }
-        private void FisherYates()
+        private void FisherYates() //Takes the top card and swaps it out with a random card in the pack
         {
             Random random = new Random();
             int n = _cards.Count;
-            while (n>1)
+            while (n>1) //runs until all are shuffled
             {
                 n--;
                 int k = random.Next(n+1);
@@ -91,14 +92,14 @@ namespace CMP1903M_A01_2223
         {
             //Deals the number of cards specified by 'amount'
             if (amount > _cards.Count || amount < 1)
-            {
+            {   //Error handling
                 throw new ArgumentException("Insufficient amount of cards");
             }
 
             List<Card> dealtCards = new List<Card>();
             for (int i = 0; i < amount; i++)
             {
-                dealtCards.Add(deal());
+                dealtCards.Add(deal()); //runs 'deal' method until desired 'ammount' are dealt
             }
             return dealtCards;
         }
