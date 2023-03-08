@@ -5,11 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
-
-class Testing
 {
-    //create a pack object here
-    //call shuffle card pack here
-    //call the deal methods here
-    //check what is returned                
-}
+    class Testing
+    {
+        public static void test()
+        {
+            new Pack();
+            Pack.shuffleCardPack(Riffle);
+            Console.WriteLine(Pack.deal());
+            Pack.shuffleCardPack(FisherYates);
+            Console.WriteLine(Pack.deal());
+            Pack.shuffleCardPack(None);
+            Console.WriteLine(Pack.deal());
+            List<Card>
+
+        }
+        //create a pack object here
+        //call shuffle card pack here
+        //call the deal methods here
+        //check what is returned                
+    }

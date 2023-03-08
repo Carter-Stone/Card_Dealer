@@ -25,10 +25,10 @@ namespace CMP1903M_A01_2223
         }
         public enum Suit
         {
-            Club = 20,
-            Diamond = 30,
-            Heart = 40,
-            Spade = 50,
+            Club = 1,
+            Diamond = 2,
+            Heart = 3,
+            Spade = 4,
         }
 
     public class Card
@@ -36,10 +36,11 @@ namespace CMP1903M_A01_2223
         //Base for the Card class.
         //The 'set' methods for these properties could have some validation
         public string _Value {get; set;}
+        public string _Number{get; set;}
 
         public override string toString()
         {
-            return $"{Rank} of {Suits}s";
+            return $"{Number} of {Suit}s";
         }
     }
 }

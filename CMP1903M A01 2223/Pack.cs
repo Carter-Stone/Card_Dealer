@@ -8,8 +8,9 @@ namespace CMP1903M_A01_2223
 {
     public enum ShuffleType
     {
-        Riffle,
-        FisherYates
+        Riffle = 1,
+        FisherYates = 2,
+        None = 3,
     }
 
     class Pack
@@ -21,17 +22,17 @@ namespace CMP1903M_A01_2223
             //Initialise the card pack here
             foreach (string _Suit in string.GetValues(typeof(_suit)))
             {
-                foreach (string _Number in string.GetValues(typeof(_number)))
+                foreach (string _Number in string.GetValues(typeof(_Number)))
                 {
-                    _cards.Add(new Card {Suit = _Suit, Number = _number});
+                    _cards.Add(new Card {Suit = _Suit, Number = _Number});
                 }
             }
         }
 
-        public static bool shuffle(int typeOfShuffle)
+        public static bool shuffleCardPack(int typeofShuffle)
         {
             //Shuffles the pack based on the type of shuffle
-            switch (shuffleType)
+            switch (ShuffleType)
             {
                 case ShuffleType.Riffle:
                     Riffle();
@@ -39,11 +40,13 @@ namespace CMP1903M_A01_2223
                 case ShuffleType.FisherYates:
                     FisherYates();
                     break;
+                case ShuffleType.None:
+                break;
                 default:
                     throw new ArgumentException("invalid shuffle type");
             }
         }
-        private void Riffle()
+        public void Riffle()
         {
             List<Card> shuffledCards = new List<Card>();
             int halfIndex = _cards.Count/2;
