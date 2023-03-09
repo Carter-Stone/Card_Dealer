@@ -1,44 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
-    //allows 3 types of shuffles
-//    public enum typeofShuffle
-//    {
-//        Riffle ,
-//        FisherYates = 2,
-//        None = 3,
-//    }
-
     public class Pack
     {
-       private List<Card> _cards = new List<Card>();
+        List<Card> _cards = new List<Card>();
         public Pack()
         {
             //creates a pack of cards, one instance for each number of each suit
-            foreach (Suit _Suit in Enum.GetValues(typeof(Suit)))
+            foreach (Card.Suit _Suit in Enum.GetValues(typeof(Card.Suit)))
             {
-                foreach (Number _Number in Enum.GetValues(typeof(Number)))
+                foreach (Card.Number _Number in Enum.GetValues(typeof(Card.Number)))
                 {
-                    _cards.Add(new Card {Suit = _Suit, Number = _Number});
+                    _cards.Add( new Card { _Suit = _Suit, _Number = _Number });
                 }
             }
         }
 
-        //searches for a match and carries out the corresponding shuffle
-        public void shuffleCardPack(int typeofShuffle)
+    //searches for a match and carries out the corresponding shuffle
+    public void shuffleCardPack(int typeofShuffle)
         {
-            if (typeofShuffle = 1){
+            if (typeofShuffle == 1){
             _Riffle();
             }
-            else if (typeofShuffle = 2){
+            else if (typeofShuffle == 2){
             _FisherYates();
             }
-            else if (typeofShuffle = 3){
+            else if (typeofShuffle == 3){
             }
             else{ //Error handling
             throw new ArgumentException("invalid shuffle type");
@@ -53,7 +47,7 @@ namespace CMP1903M_A01_2223
                 shuffledCards.Add(_cards[i]);
                 shuffledCards.Add(_cards[i + halfIndex]);
             }
-            if (_cards.Count % 2 !=0)
+            if (_cards.Count % 2 ==1)
             {
                 shuffledCards.Add(_cards.Last());
             }
@@ -63,15 +57,16 @@ namespace CMP1903M_A01_2223
         {
             Random random = new Random();
             int n = _cards.Count;
-            while (n>1) //runs until all are shuffled
+            while (n>0) //runs until all are shuffled
             {
                 n--;
                 int k = random.Next(n+1);
-                _cards card = _cards[k];
+                Card card = _cards[k];
+                _cards[k] = _cards[n];
                 _cards[n] = card;
             }
         }
-        public void Deal()
+        public Card Deal()
         {
             //Error Handling
             if(_cards.Count == 0)
@@ -79,13 +74,13 @@ namespace CMP1903M_A01_2223
                 throw new Exception("No cards in deck");
             }
             //Deals one card
-            var TopCard = _cards[0];
-            _cards.RemoveAt(0);
-            return TopCard;
+            var topCard = _cards[0];
+            _cards.Remove(topCard);
+            return topCard;
 
         }
         
-        public static List<Card> dealCard(int amount)
+        public List<Card> dealCard(int amount)
         {
             //Deals the number of cards specified by 'amount'
             if (amount > _cards.Count || amount < 1)
@@ -96,7 +91,7 @@ namespace CMP1903M_A01_2223
             List<Card> dealtCards = new List<Card>();
             for (int i = 0; i < amount; i++)
             {
-                dealtCards.Add(deal()); //runs 'deal' method until desired 'ammount' are dealt
+                dealtCards.Add(Deal()); //runs 'deal' method until desired 'ammount' are dealt
             }
             return dealtCards;
         }

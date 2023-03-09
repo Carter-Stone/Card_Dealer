@@ -8,8 +8,7 @@ namespace CMP1903M_A01_2223
 {
     public class Card
     {
-    //assigns an int to each string
-        private enum Number
+        public enum Number
         {
             Ace = 1,
             Two = 2,
@@ -24,34 +23,23 @@ namespace CMP1903M_A01_2223
             Jack = 11,
             Queen = 12,
             King = 13,
-            
         }
-        private enum Suit
+
+        public enum Suit
         {
             Club = 1,
             Diamond = 2,
             Heart = 3,
             Spade = 4,
         }
-    //constructs a card
 
-        //Base for the Card class.
-        public string _Number
+        public Number _Number { get; set; }
+
+        public Suit _Suit { get; set; }
+
+        public override string ToString()
         {
-            get {return Number; }
-            set {Number = value; }
+            return $"{_Number} of {_Suit}s"; //returns card in readable format
         }
-
-        public string _Suit
-        {
-            get {return Suit;}
-            set {Suit = value;}
-        }
-    }
-
-       // public override Card tostring() //was 'string toString'
-       // {
-       //     return $"{_Number} of {_Suit}s"; //returns card in readable format
-       // }
     }
 }
