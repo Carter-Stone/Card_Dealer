@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace CMP1903M_A01_2223
 {
     public class Pack
-    {
+    {  //creates the pack
         List<Card> _cards = new List<Card>();
         public Pack()
         {

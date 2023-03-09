@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CMP1903M_A01_2223
 {
     public class Card
-    {
+    {   //creates a list of card values
         public enum Number
         {
             Ace = 1,
@@ -24,7 +24,7 @@ namespace CMP1903M_A01_2223
             Queen = 12,
             King = 13,
         }
-
+        //creates a list of suits
         public enum Suit
         {
             Club = 1,
@@ -34,9 +34,9 @@ namespace CMP1903M_A01_2223
         }
 
         public Number _Number { get; set; }
-
+        //puts the Number and Suit into the card
         public Suit _Suit { get; set; }
-
+        //presents the card in the format "Value" of "Suit"s
         public override string ToString()
         {
             return $"{_Number} of {_Suit}s"; //returns card in readable format
