@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace CMP1903M_A01_2223
 {
     //allows 3 types of shuffles
-    public enum ShuffleType
-    {
-        Riffle = 1,
-        FisherYates = 2,
-        None = 3,
-    }
+//    public enum typeofShuffle
+//    {
+//        Riffle ,
+//        FisherYates = 2,
+//        None = 3,
+//    }
 
     public class Pack
     {
@@ -32,22 +32,19 @@ namespace CMP1903M_A01_2223
         //searches for a match and carries out the corresponding shuffle
         public void shuffleCardPack(int typeofShuffle)
         {
-            //Shuffles the pack based on the type of shuffle
-            switch (ShuffleType)
-            {
-               case ShuffleType.Riffle:
-                    Riffle();
-                    break;
-                case ShuffleType.FisherYates:
-                    FisherYates();
-                    break;
-                case ShuffleType.None:
-                break;
-                default:  //Error handling
-                throw new ArgumentException("invalid shuffle type");
+            if (typeofShuffle = 1){
+            _Riffle();
+            }
+            else if (typeofShuffle = 2){
+            _FisherYates();
+            }
+            else if (typeofShuffle = 3){
+            }
+            else{ //Error handling
+            throw new ArgumentException("invalid shuffle type");
             }
         }
-        public void Riffle() //splits the pack in half and interweaves them
+        public void _Riffle() //splits the pack in half and interweaves them
         {
             List<Card> shuffledCards = new List<Card>();
             int halfIndex = _cards.Count/2;
@@ -62,7 +59,7 @@ namespace CMP1903M_A01_2223
             }
             _cards = shuffledCards;
         }
-        private void FisherYates() //Takes the top card and swaps it out with a random card in the pack
+        private void _FisherYates() //Takes the top card and swaps it out with a random card in the pack
         {
             Random random = new Random();
             int n = _cards.Count;

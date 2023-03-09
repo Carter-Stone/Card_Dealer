@@ -8,7 +8,7 @@ namespace CMP1903M_A01_2223
 {
     class Program
     {
-        static static void Main()
+        static void Main()
         {
             Pack pack = new Pack(); //create pack
             pack.shuffleCardPack(ShuffleType.Riffle); //shuffle

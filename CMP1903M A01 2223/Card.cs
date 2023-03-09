@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
+    public class Card
+    {
     //assigns an int to each string
-        public enum Number
+        private enum Number
         {
             Ace = 1,
             Two = 2,
@@ -24,7 +26,7 @@ namespace CMP1903M_A01_2223
             King = 13,
             
         }
-        public enum Suit
+        private enum Suit
         {
             Club = 1,
             Diamond = 2,
@@ -32,15 +34,24 @@ namespace CMP1903M_A01_2223
             Spade = 4,
         }
     //constructs a card
-    public class Card
-    {
-        //Base for the Card class.
-        public string _Number {get; set;}
-        public string _Suit {get; set;}
 
-        public override string toString()
+        //Base for the Card class.
+        public string _Number
         {
-            return $"{Number} of {Suit}s"; //returns card in readable format
+            get {return Number; }
+            set {Number = value; }
         }
+
+        public string _Suit
+        {
+            get {return Suit;}
+            set {Suit = value;}
+        }
+    }
+
+       // public override Card tostring() //was 'string toString'
+       // {
+       //     return $"{_Number} of {_Suit}s"; //returns card in readable format
+       // }
     }
 }
